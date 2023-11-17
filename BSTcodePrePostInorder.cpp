@@ -27,6 +27,18 @@ node* insert(node* root,int key){
 
     return root;
 }
+//search
+int search(node* root,int key)
+{
+  if(root==NULL)return 0;
+  
+  if(root->val==key)return 1;
+
+  else if(key>root->val)return search(root->right,key);
+
+  else return search(root->left,key);
+}
+
 
 int height(node* root)
 {
