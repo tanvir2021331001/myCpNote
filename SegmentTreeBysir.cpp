@@ -3,7 +3,7 @@ using namespace std;
 const int n=6;
 int arr[n+4],tree[4*n];
 void build(int node ,int l,int r){
-  if(l==r){
+  if(l>=r){
     tree[node]=arr[r];
     return;
   }
@@ -18,7 +18,7 @@ int query(int node,int l,int r,int i,int j){
     if(j<l||i>r){
         return 0;
     }
-    if(i<=l&& j<=r){
+    if(l>=i&& r<=j){
         return tree[node];
     }
     int mid =(l+r)/2;
