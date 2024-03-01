@@ -42,11 +42,11 @@ int lca(int u, int v)
 {
   if (is_ancestor(u, v))
   {
-    return true;
+    return u;
   }
   else if (is_ancestor(v, u))
   {
-    return true;
+    return v;
   }
   for (int i = l; i >= 0; i--)
   {
