@@ -49,3 +49,50 @@ int32_t main()
     solve();
     return 0;
 }
+
+
+//tabulation
+
+int ninjaTraining(int n, vector<vector<int>> &points)
+{
+    vector<vector<int> >dp(n,vector<int>(5,-1));
+     for(int i=0;i<3;i++){
+         for(int task=0;task<3;task++){
+             if(task!=i)
+             dp[0][i]=max(dp[0][i],points[0][task]);
+         }
+     }
+     for(int i=1;i<n;i++){
+         for(int j=0;j<4;j++){
+             for(int task=0;task<3;task++){
+                 if(task!=j)dp[i][j]=max(dp[i][j],points[i][task]+dp[i-1][task]);
+             }
+         }
+     }
+    return dp[n-1][3];
+}
+
+///space optimization
+
+int ninjaTraining(int n, vector<vector<int>> &points) {
+  vector<int> keep(4, 0);
+  for (int i = 0; i < 4; i++) {
+
+    for (int task = 0; task < 3; task++) {
+      if (task != i)
+        keep[i] = max(keep[i], points[0][task]);
+    }
+  }
+  for (int i = 1; i < n; i++) {
+    vector<int> temp(4, 0);
+    for (int j = 0; j < 4; j++) {
+      for (int task = 0; task < 3; task++) {
+        if (task != j)
+          temp[j] = max(temp[j], points[i][task] + keep[task]);
+      }
+    }
+    keep = temp;
+  }
+  return keep[3];
+}
+
