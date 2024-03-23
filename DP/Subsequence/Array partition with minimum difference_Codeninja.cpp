@@ -1,4 +1,5 @@
 //sapce optimization
+// https://bit.ly/3t62bqQ
 int minSubsetSumDifference(vector<int> &arr, int n) {
   int sum = 0;
   for (int i = 0; i < n; i++) {
