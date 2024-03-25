@@ -1,5 +1,16 @@
 //memoizaton
 //https://bit.ly/3pvkqUd
+/*
+NOTE: 
+IF It is called for the Longest palindromic subsequence  for string str
+   then 
+ LCS between str and reverse str will be the Longest palindromic subsequence
+*/
+
+
+
+
+
 int f(vector<vector<int>> &dp, string &s, string &t, int n, int m) {
   if (n == 0 || m == 0)
     return 0;
