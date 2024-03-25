@@ -1,3 +1,13 @@
+
+/*
+NOTE: 
+IF It is called for the Longest palindromic subsequence  for string str
+   then 
+ LCS between str and reverse str will be the Longest palindromic subsequence
+*/
+
+
+
 #include <vector>
 int lcs(string s, string t) {
   int n = s.size(), m = t.size();
