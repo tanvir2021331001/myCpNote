@@ -67,4 +67,51 @@ int32_t main()
 }
 
 //Optimized
+#include <bits/stdc++.h>
+using namespace std;
+const int n=8;
+int bord[n][n];
+int fd[2*n+1],sd[2*n+1],ro[n+1];
 
+bool fill(int col)
+{
+   if(col>=n)
+   {
+    return true;
+   }
+   for(int i=0;i<n;i++)
+   {
+    if(ro[i]==0&&fd[i+col]==0&&sd[i-col+n-1]==0)
+    {
+      ro[i]=1;
+      bord[i][col]=fd[i+col]=sd[i-col+n-1]=1;
+      if(fill(col+1))
+      {
+        return true;
+      }
+      ro[i]=0;
+       bord[i][col]=fd[i+col]=sd[i-col+n-1]=0;
+    }
+
+   }
+   return false;
+}
+void solve()
+{
+ fill(0);
+ for(int i=0;i<n;i++)
+ {
+    for(int j=0;j<n;j++)
+    {
+        cout<<bord[i][j]<<" ";
+    }
+    cout<<"\n";
+ }
+  
+
+}
+int32_t main()
+{
+  solve();
+  return 0;
+}
